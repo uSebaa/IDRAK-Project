@@ -19,120 +19,124 @@ st.set_page_config(
 BASE_DIR = Path(__file__).resolve().parent
 
 # ==================================================
-# DESIGN SYSTEM
+# DESIGN SYSTEM — IDRAK DARK NAVY
 # ==================================================
 
 st.markdown("""
 <style>
-/* IDRAK Logo - Remove Extra Spacing */
-
-[data-testid="stImage"] {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-}
-
-[data-testid="stImage"] img {
-    display: block;
-}
-/* ==========================================
-   WHY IDRAK - EQUAL SIZE CARDS
-   ========================================== */
-
-.feature-card {
-    height: 200px !important;
-    min-height: 200px !important;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.feature-card p {
-    margin-bottom: 0;
-}
-
-.feature-card p {
-    margin-top: auto;
-}
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-    --navy: #102B60;
-    --blue: #1264E8;
-    --light-blue: #EAF3FF;
-    --background: #F7FAFF;
-    --muted: #61738F;
+    --navy: #030B20;
+    --navy-light: #0B1B38;
+    --card: #102448;
+    --blue: #249BFF;
+    --text: #FFFFFF;
+    --muted: #B8C8E0;
+    --border: #24466B;
 }
 
 html, body, [class*="css"] {
     font-family: 'Inter', sans-serif;
 }
 
+/* ==========================================
+   MAIN BACKGROUND
+   ========================================== */
+
 .stApp {
     background: linear-gradient(
         135deg,
-        #F5F9FF 0%,
-        #FFFFFF 65%,
-        #F3F8FF 100%
-    );
+        #030B20 0%,
+        #07152E 55%,
+        #0B2040 100%
+    ) !important;
+
+    color: var(--text) !important;
 }
 
-/* Hide sidebar */
+/* ==========================================
+   STREAMLIT LAYOUT
+   ========================================== */
+
 [data-testid="stSidebar"],
 [data-testid="collapsedControl"] {
     display: none !important;
 }
 
-/* Remove extra top spacing */
 [data-testid="stHeader"] {
-    height: 0;
-    min-height: 0;
-    background: transparent;
+    height: 0 !important;
+    min-height: 0 !important;
+    background: transparent !important;
 }
 
 [data-testid="stToolbar"] {
-    display: none;
+    display: none !important;
 }
 
-/* Main container */
 .block-container {
     max-width: 1280px;
     padding-top: 0.5rem !important;
-    padding-bottom: 3rem;
+    padding-bottom: 3rem !important;
 }
 
-/* Remove unnecessary top margin */
 [data-testid="stMainBlockContainer"] {
     padding-top: 0.5rem !important;
 }
 
-/* Typography */
-h1, h2, h3 {
-    color: #102B60 !important;
+/* ==========================================
+   TYPOGRAPHY
+   ========================================== */
+
+.stApp h1,
+.stApp h2,
+.stApp h3,
+.stApp h4 {
+    color: #FFFFFF !important;
     letter-spacing: -0.5px;
 }
 
-/* Navigation */
+.stApp p,
+.stApp label {
+    color: var(--muted);
+}
+
+/* ==========================================
+   NAVIGATION
+   ========================================== */
+
 .nav-brand {
     font-size: 27px;
     font-weight: 800;
-    color: #102B60;
+    color: #FFFFFF;
     letter-spacing: 1px;
     padding-top: 7px;
 }
 
 .nav-subtitle {
     font-size: 11px;
-    color: #61738F;
+    color: var(--muted);
     margin-top: -5px;
 }
 
-/* Buttons */
+/* ==========================================
+   BUTTONS
+   ========================================== */
+
 div.stButton > button {
+    background: #142D53;
+    color: #FFFFFF !important;
+    border: 1px solid var(--border);
     border-radius: 12px;
     font-weight: 600;
     min-height: 45px;
     transition: all 0.2s ease;
+}
+
+div.stButton > button:hover {
+    background: #1A3C6C;
+    border-color: var(--blue);
+    color: #FFFFFF !important;
 }
 
 div.stButton > button[kind="primary"] {
@@ -140,26 +144,32 @@ div.stButton > button[kind="primary"] {
         90deg,
         #1264E8,
         #267CF4
-    );
-    color: white;
-    border: none;
-    box-shadow: 0 5px 15px rgba(18, 100, 232, 0.15);
+    ) !important;
+
+    color: #FFFFFF !important;
+    border: none !important;
+
+    box-shadow: 0 5px 15px rgba(18, 100, 232, 0.2);
 }
 
 div.stButton > button[kind="primary"]:hover {
-    background: #104FC1;
-    color: white;
+    background: #104FC1 !important;
 }
 
-/* Hero */
+/* ==========================================
+   HERO SECTION
+   ========================================== */
+
 .hero {
     background: linear-gradient(
         115deg,
-        #E8F2FF 0%,
-        #FFFFFF 75%
-    );
-    border: 1px solid #E0EBFB;
+        #102A50 0%,
+        #07152E 100%
+    ) !important;
+
+    border: 1px solid var(--border);
     border-radius: 24px;
+
     padding: 55px 48px;
     margin-top: 25px;
     margin-bottom: 28px;
@@ -167,10 +177,13 @@ div.stButton > button[kind="primary"]:hover {
 
 .hero-badge {
     display: inline-block;
-    background: #DCEBFF;
-    color: #1555C8;
+
+    background: #173A69;
+    color: #7DD3FC;
+
     padding: 8px 15px;
     border-radius: 30px;
+
     font-size: 12px;
     font-weight: 700;
     margin-bottom: 18px;
@@ -179,153 +192,258 @@ div.stButton > button[kind="primary"]:hover {
 .hero-title {
     font-size: clamp(30px, 4vw, 48px);
     font-weight: 800;
-    color: #102B60;
+    color: #FFFFFF !important;
     line-height: 1.2;
 }
 
 .hero-title span {
-    color: #1264E8;
+    color: #38BDF8 !important;
 }
 
 .hero-description {
     font-size: 17px;
-    color: #536987;
+    color: var(--muted) !important;
     max-width: 620px;
     line-height: 1.8;
     margin-top: 18px;
 }
 
-/* Feature badges */
+/* Hero feature badges */
+
 .hero-features {
     display: flex;
     flex-wrap: wrap;
     gap: 22px;
+
     margin-top: 28px;
-    color: #244575;
+
+    color: #DCEBFF !important;
     font-size: 14px;
     font-weight: 600;
 }
 
-/* Section titles */
+.hero-features span {
+    color: #DCEBFF !important;
+}
+
+/* ==========================================
+   SECTION TITLES
+   ========================================== */
+
 .section-title {
     font-size: 27px;
     font-weight: 800;
-    color: #102B60;
+    color: #FFFFFF !important;
     text-align: center;
     margin-bottom: 8px;
 }
 
 .section-subtitle {
-    color: #61738F;
+    color: var(--muted) !important;
     text-align: center;
     font-size: 15px;
     margin-bottom: 25px;
 }
 
-/* Prediction */
+/* ==========================================
+   CUSTOMER INPUT
+   ========================================== */
+
+.stApp textarea,
+.stApp input {
+    background: #0B1B38 !important;
+    color: #FFFFFF !important;
+
+    border: 1px solid var(--border) !important;
+    border-radius: 14px !important;
+}
+
+.stApp textarea::placeholder,
+.stApp input::placeholder {
+    color: #8FA5C5 !important;
+}
+
+.stApp label {
+    color: #E2E8F0 !important;
+}
+
+/* ==========================================
+   FEATURE CARDS
+   ========================================== */
+
+.feature-card {
+    background: #0B1B38 !important;
+
+    border: 1px solid var(--border) !important;
+    border-radius: 18px;
+
+    padding: 24px;
+
+    height: 200px;
+    min-height: 200px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+}
+
+.feature-title {
+    font-size: 16px;
+    font-weight: 700;
+
+    color: #FFFFFF !important;
+
+    margin-bottom: 10px;
+}
+
+.feature-description {
+    color: #B8C8E0 !important;
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* ==========================================
+   PREDICTION RESULTS
+   ========================================== */
+
 .prediction-card {
     background: linear-gradient(
         115deg,
-        #EAF3FF,
-        #FFFFFF
-    );
-    border: 1px solid #DCE9FB;
+        #102A50,
+        #0B1B38
+    ) !important;
+
+    border: 1px solid var(--border);
     border-radius: 20px;
+
     padding: 28px;
     margin-top: 15px;
     margin-bottom: 20px;
 }
 
 .prediction-label {
-    color: #61738F;
+    color: #B8C8E0 !important;
     font-size: 14px;
     font-weight: 500;
 }
 
 .prediction-value {
-    color: #102B60;
+    color: #FFFFFF !important;
     font-size: 29px;
     font-weight: 800;
+
     margin-top: 10px;
     overflow-wrap: anywhere;
 }
 
 .confidence-value {
-    color: #1264E8;
+    color: #38BDF8 !important;
+
     font-size: 16px;
     font-weight: 700;
     margin-top: 12px;
 }
 
-/* Info cards */
-.feature-card {
-    background: #FFFFFF;
-    border: 1px solid #E5EDFA;
-    border-radius: 18px;
-    padding: 24px;
-    min-height: 160px;
-    box-shadow: 0 5px 20px rgba(30, 75, 140, 0.04);
-}
+/* ==========================================
+   FOOTER
+   ========================================== */
 
-.feature-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: #102B60;
-    margin-bottom: 10px;
-}
-
-.feature-description {
-    color: #61738F;
-    font-size: 13px;
-    line-height: 1.7;
-}
-
-/* Footer */
 .footer {
     margin-top: 65px;
     padding: 30px;
+
     border-radius: 18px;
-    background: #102B60;
-    color: #FFFFFF;
+
+    background: #07152E !important;
+    border: 1px solid var(--border);
+
+    color: #FFFFFF !important;
     text-align: center;
 }
 
 .footer-title {
     font-size: 21px;
     font-weight: 800;
+    color: #FFFFFF !important;
     margin-bottom: 8px;
 }
 
 .footer-description {
-    color: #C8D7F2;
+    color: #C8D7F2 !important;
     font-size: 13px;
 }
 
-/* Input */
-textarea {
-    border-radius: 14px !important;
-    border: 1px solid #DCE6F5 !important;
+.footer-tagline {
+    color: #38BDF8 !important;
 }
 
-/* Responsive */
+/* ==========================================
+   LOGO
+   ========================================== */
+
+[data-testid="stImage"] {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+[data-testid="stImage"] img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE
+   ========================================== */
+
 @media (max-width: 768px) {
+
+    .block-container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
     .hero {
         padding: 30px 22px;
+        margin-top: 15px;
     }
 
     .hero-title {
         font-size: 31px;
     }
 
-    .hero-features {
-        gap: 12px;
+    .hero-description {
+        font-size: 15px;
     }
 
-    .block-container {
-        padding-left: 1rem;
-        padding-right: 1rem;
+    .hero-features {
+        gap: 12px;
+        font-size: 12px;
+    }
+
+    .feature-card {
+        height: auto;
+        min-height: 160px;
+    }
+
+    .prediction-value {
+        font-size: 23px;
+    }
+
+    .footer {
+        padding: 24px 16px;
     }
 }
+/* IDRAK Closing Statement */
+.footer-tagline {
+    color: #FFFFFF !important;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -1155,7 +1273,7 @@ st.markdown(
         margin-bottom: 25px;
         font-size: 15px;
         font-weight: 500;
-        color: #142F63;
+        color: #FFFFFF;
         letter-spacing: 0.3px;
     ">
         IDRAK Here to Help You Understand Your Banking Needs.
